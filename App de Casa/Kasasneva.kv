@@ -1,0 +1,345 @@
+<Tela>:
+    id: ScMan
+    Screen:
+        name: 'Login'
+        BoxLayout:
+            orientation: 'vertical'
+            padding: 100
+            spacing: 100
+            canvas:
+                Color:
+                    rgba: 0.10196078431,0.10196078431,0.2,1
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+            Image:
+                source: 'imagens/Logo.png'
+                allow_stretch: True
+                size_hint: None,None
+                pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+                width: 550
+                height: 550
+
+            BoxLayout:
+                orientation: 'vertical'
+                spacing: 25
+                Label:
+                    text: 'Login'
+                    font_size: 30
+
+                TextInput:
+                    id: Usuario
+                    text: 'username'
+                    size_hint: None,None
+                    pos_hint: {'center_x': .5, 'center_y': .5}
+                    height: 50
+                    width: 400
+                    font_size:25
+
+                Label:
+                    text: 'Password'
+                    font_size: 30
+
+                TextInput:
+                    id: Senha
+                    text: '******'
+                    size_hint: None,None
+                    pos_hint: {'center_x': .5, 'center_y': .5}
+                    height: 50
+                    width: 400
+                    font_size:25
+
+                Button:
+                    background_normal: 'imagens/btnLogin_up.jpg'
+                    background_down: 'imagens/btnLogin_down.jpg'
+                    size_hint:None,None
+                    pos_hint: {'center_x': .5, 'center_y': .5}
+                    size: 200,50
+                    on_press: app.verificar(Usuario,Senha,ScMan)
+
+    Screen:
+        name: 'Menu'
+        BoxLayout:
+            padding: 100
+            spacing: 10
+            orientation: 'vertical'
+            canvas:
+                Color:
+                    rgba: 0.10196078431,0.10196078431,0.2,1
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+            Label:
+                text: 'Menu'
+                font_size: 45
+                
+            Button:
+                background_normal: 'imagens/btnAdd_up.jpg'
+                background_down: 'imagens/btnAdd_down.jpg'
+                size_hint:None,None
+                pos_hint: {'center_x': .5, 'center_y': .5}
+                size: 200,50
+                on_press: ScMan.current = 'AddDado'
+                
+            Button:
+                background_normal: 'imagens/btnPesquisar_up.jpg'
+                background_down: 'imagens/btnPesquisar_down.jpg'
+                size_hint:None,None
+                pos_hint: {'center_x': .5, 'center_y': .5}
+                size: 200,50
+                on_press: ScMan.current = 'Pesquisa'
+                
+            Button:
+                background_normal: 'imagens/btnDisp_up.jpg'
+                background_down: 'imagens/btnDisp_down.jpg'
+                size_hint:None,None
+                pos_hint: {'center_x': .5, 'center_y': .5}
+                size: 200,50
+                on_press: ScMan.current = 'Disponivel'
+                
+            Button:
+                background_normal: 'imagens/btnClose_up.jpg'
+                background_down: 'imagens/btnClose_down.jpg'
+                size_hint:None,None
+                pos_hint: {'center_x': .5, 'center_y': .5}
+                size: 200,50
+                on_press: app.stop()
+
+    Screen:
+        name: 'AddDado'
+        BoxLayout:
+            padding: 10
+            spacing: 50
+            orientation: 'vertical'
+            canvas:
+                Color:
+                    rgba: 0.10196078431,0.10196078431,0.2,1
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+            BoxLayout:
+                padding: 10
+                orientation: 'horizontal'       
+                BoxLayout:
+                    orientation: 'vertical'
+                    spacing: -10
+                    Label:
+                        size_hint: None,None
+                        pos_hint: {'right': 0.8}
+                        text: 'Cidade:'
+                        font_size:25
+                    Label:
+                        size_hint: None,None
+                        pos_hint: {'right': 0.8}
+                        text: 'Tipo:'
+                        font_size:25
+                    Label:
+                        size_hint: None,None
+                        pos_hint: {'right': 0.8}
+                        text: 'Negocio:'
+                        font_size:25
+                    Label:
+                        size_hint: None,None
+                        pos_hint: {'right': 0.8}
+                        text: 'Valor:'
+                        font_size:25
+                        
+                BoxLayout:
+                    orientation: 'vertical'
+                    spacing: 50
+                    padding: 20
+                    
+                    TextInput:
+                        id: cidade
+                        size_hint: None,None
+                        height: 42
+                        width: 250
+                        text: ''
+                        font_size:25
+                        
+                    TextInput:
+                        id: tipo
+                        size_hint: None,None
+                        height: 42
+                        width: 250
+                        text: ''
+                        font_size:25
+                        
+                    TextInput:
+                        id: negocio
+                        size_hint: None,None
+                        height: 42
+                        width: 250
+                        text: ''
+                        font_size:25
+                        
+                    TextInput:
+                        id: valor
+                        size_hint: None,None
+                        height: 42
+                        width: 250
+                        text: ''
+                        font_size:25
+
+            Button:
+                background_normal: 'imagens/btnAdd_up.jpg'
+                background_down: 'imagens/btnAdd_down.jpg'
+                size_hint:None,None
+                pos_hint: {'center_x': .5, 'center_y': .5}
+                size: 200,50
+                on_press: app.AddDados(cidade,tipo,negocio,valor)
+                
+            Button:
+                background_normal: 'imagens/btnBack_up.jpg'
+                background_down: 'imagens/btnBack_down.jpg'
+                size_hint: None,None
+                pos_hint: {'x': 0, 'y': 0}
+                size: 200,50
+                on_press: ScMan.current = 'Menu'
+
+    Screen:
+        name: 'Pesquisa'
+        BoxLayout:
+            padding: 10
+            spacing: 50
+            orientation: 'vertical'
+            canvas:
+                Color:
+                    rgba: 0.10196078431,0.10196078431,0.2,1
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+
+                    
+            BoxLayout:
+                orientation: 'horizontal'
+                spacing: 5
+                size_hint_y: None
+                height: 90
+                ToggleButton:
+                    id: TBcidade
+                    background_normal: 'imagens/btnCidade_up.jpg'
+                    background_down: 'imagens/btnCidade_down.jpg'
+                    group: 'tipopesq'
+                    on_press: app.Analise(TBcidade,TBtipo,TBnegocio,BarradePesq,tabela)
+                    
+                ToggleButton:
+                    id: TBtipo
+                    background_normal: 'imagens/btnTipo_up.jpg'
+                    background_down: 'imagens/btnTipo_down.jpg'
+                    group: 'tipopesq'
+                    on_press: app.Analise(TBcidade,TBtipo,TBnegocio,BarradePesq,tabela)
+                    
+                ToggleButton:
+                    id: TBnegocio
+                    background_normal: 'imagens/btnNegocio_up.jpg'
+                    background_down: 'imagens/btnNegocio_down.jpg'
+                    group: 'tipopesq'
+                    on_press: app.Analise(TBcidade,TBtipo,TBnegocio,BarradePesq,tabela)
+
+                    
+            TextInput:
+                id: BarradePesq
+                text: 'Pesquisar por...'
+                size_hint_y: None
+                height: 50
+                font_size:25
+    
+
+            ScrollView:
+                
+                canvas.before:
+                    Color:
+                        rgba: 0.05,0.05,0.12,1
+                    Rectangle:
+                        pos: self.pos
+                        size: self.size
+                BoxLayout:
+                    id: tabela
+                    orientation: 'vertical'
+                    size_hint_y: None
+                    height: self.minimum_height
+                    
+            Button:
+                background_normal: 'imagens/btnPesquisar_up.jpg'
+                background_down: 'imagens/btnPesquisar_down.jpg'
+                size_hint:None,None
+                pos_hint: {'center_x': .5, 'center_y': .5}
+                size: 200,50
+                on_press: app.Pesquisar(TBcidade,TBtipo,TBnegocio,BarradePesq,tabela)
+            
+            Button:
+                background_normal: 'imagens/btnBack_up.jpg'
+                background_down: 'imagens/btnBack_down.jpg'
+                size_hint: None,None
+                pos_hint: {'x': 0, 'y': 0}
+                size: 200,50
+                on_press: ScMan.current = 'Menu'
+            
+    Screen:
+        name: 'Disponivel'
+        BoxLayout:
+            padding: 10
+            spacing: 10
+            orientation: 'vertical'
+            canvas:
+                Color:
+                    rgba: 0.10196078431,0.10196078431,0.2,1
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+            PageLayout:
+
+                Image:
+                    source: 'imagens/Apartamento/Sob1.jpg'
+                    allow_stretch: True
+                Image:
+                    source: 'imagens/Apartamento/Sob2.jpg'
+                    allow_stretch: True
+                Image:
+                    source: 'imagens/Apartamento/Sob3.jpg'
+                    allow_stretch: True
+                Image:
+                    source: 'imagens/Apartamento/Sob4.jpg'
+                    allow_stretch: True
+                Image:
+                    source: 'imagens/Apartamento/Sob5.jpg'
+                    allow_stretch: True
+                Image:
+                    source: 'imagens/Apartamento/Sob6.jpg'
+                    allow_stretch: True
+                                    
+            BoxLayout:
+                orientation: 'vertical'
+                size_hint_y: None
+                height: 100
+                canvas.before: 
+                    Color:
+                        rgba: 0.05,0.05,0.12,1
+                    Rectangle:
+                        pos: self.pos
+                        size: self.size
+                Label:
+                    text: 'Descrição'
+                    font_size: 35
+                Label:
+                    text: '  Sobrado na Zona Noroeste de Santos, 2 quartos, sala, cozinha e banheiro, \nreformado recentemente, proximo aos principais comércios da região e escolas'
+                
+                
+        
+            Button:
+                background_normal: 'imagens/btnBack_up.jpg'
+                background_down: 'imagens/btnBack_down.jpg'
+                size_hint: None,None
+                pos_hint: {'x': 0, 'y': 0}
+                size: 200,50
+                on_press: ScMan.current = 'Menu'
+        
+            
+                            
+        
+
+     
+
+
+    
